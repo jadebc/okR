@@ -1,4 +1,6 @@
-# TODO: Update All links and bring over all documentation OkR Example Workflow
+`TODO: Update All links and bring over all documentation`
+
+# OkR Example Workflow
 
 1. *Instructor* releases the skeleton file to *students*, alongside any utility files, datasets, assignment specifications, or example code. This is represented by the [Example HW Skeleton](https://github.com/jadebc-berkeley/PH250B/blob/master/OkR/Hw0_Skeleton.R).
 2. *Students* receive skeleton file and/or specification and begin work in RStudio. They complete their assignment and prepare for submission. This is represented by the [Example HW Submission](https://github.com/jadebc-berkeley/PH250B/blob/master/OkR/Hw0_Submission.R).
