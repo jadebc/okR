@@ -2,7 +2,7 @@
 
 # OkR Example Workflow
 
-1. *Instructor* releases the skeleton file to *students*, alongside any utility files, datasets, assignment specifications, or example code. This is represented by the [Example HW Skeleton](https://github.com/jadebc-berkeley/PH250B/blob/master/OkR/Hw0_Skeleton.R).
+1. *Instructor* releases the skeleton file to *students*, alongside any utility files, datasets, assignment specifications, or example code. This is represented by the [Example HW Skeleton](https://github.com/jadebc-berkeley/okR/blob/master/HW0_Skeleton.R).
 2. *Students* receive skeleton file and/or specification and begin work in RStudio. They complete their assignment and prepare for submission. This is represented by the [Example HW Submission](https://github.com/jadebc-berkeley/PH250B/blob/master/OkR/Hw0_Submission.R).
 3. *Students* submit their submission code on our [OkR](https://okpy.org) submission system.
 4. On the OkR server, the autograder runs on the submission code for each *student*. This is represented by the [Example HW Autograder](https://github.com/jadebc-berkeley/PH250B/blob/master/OkR/Hw0.ok.R).
