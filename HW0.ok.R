@@ -1,35 +1,42 @@
-# Test OkR HW0 Autograding File
-# Default usage handles single file submission fileName contained in same working directory.
-# Can modify to grade multiple submissions from pathSubmissions directory
-
+library(here)
+library(jsonlite)
+library(rlist)
 library(checkr)         # CheckR is generally more useful for open-ended, broader checks
 library(assertthat)     # Assertthat is generally more useful for more specific, assertion-based checks
-library(here)
-source("ScoreExport.ok.R")
 
-# Graded submissions will be generated into JSONs and populate targetDirName
-targetDirName = "Hw0_Scored"
+AutograderInit = function() {
+  scores <<- vector(mode="character", length=3)   # Put total number of questions here
+}
 
-### (A) If grading single file, can source directly
-fileName = "Hw0_Submission.R"
+ReturnScore = function(problemNumber, eval) {
+  if (eval == TRUE) {
+    cat(sprintf("Problem %d: 1/1\n", problemNumber))
+  }
+  else {
+    cat(sprintf("Problem %d: 0/1\nError: %s\n", problemNumber, eval))
+  }
+}
 
-### (B) If grading from a directory, provide pathSubmissions to submissions directory
-# pathSubmissions = "HW0_Submissions"
-# filesToGrade = list.files(here(pathSubmissions))
+CheckProblem1 = function() {
+  problemNumber = 1   # Change to question #
+  eval = validate_that(is.numeric(x) & is.numeric(y), msg="Wrong!")
+  
+  scores[problemNumber] <<- eval
+  ReturnScore(problemNumber, eval)
+}
 
-# Changed per assignment
-Autograde = function() {
-  scores = c()
+CheckProblem2 = function() {
+  problemNumber = 2   # Change to question #
+  eval = validate_that(is.numeric(x), is.numeric(y),
+                       is.numeric(z), is.numeric(z),
+                       are_equal(z, x*y))
+  
+  scores[problemNumber] <<- eval
+  ReturnScore(problemNumber, eval)
+}
 
-  # Problem 1 Score
-  scores = c(scores, validate_that(is.numeric(x) & is.numeric(y)))
-
-  # Problem 2 Score
-  scores = c(scores, validate_that(is.numeric(x), is.numeric(y),
-                                   is.numeric(z), is.numeric(z),
-                                   are_equal(z, x*y)))
-
-  # Problem 3 Score
+CheckProblem3 = function() {
+  problemNumber = 3   # Change to question #
   subsetFlightsCopy = tryCatch(
     expr=check_data(x=subsetFlights,
                     values=colnames(flights), exclusive=TRUE, order=FALSE,
@@ -37,24 +44,44 @@ Autograde = function() {
                     error=TRUE),
     error=function(e) e
   )
-  scores = c(scores, validate_that(identical(subsetFlights, subsetFlightsCopy)))
-
-  return(scores)
+  eval = validate_that(are_equal(a, z%%100), 
+                       identical(subsetFlights, subsetFlightsCopy))
+  
+  scores[problemNumber] <<- eval
+  ReturnScore(problemNumber, eval)
 }
 
-### (A) Grades fileName
-source(fileName)
-scores = Autograde()
-WriteToFile(scores, fileName, targetDirName)
+# Renders scores from each problem and returns as a dataframe.
+MyTotalScore = function() {
+  scoresList = c()
+  problemNumber = 1
+  problemTitles = c()
+  totalCorrect = 0
 
-### (B) Autogrades multiple submissions in specified pathSubmissions directory
-# for (i in 1:length(filesToGrade)) {
-#   source(here(pathSubmissions, filesToGrade[[i]]))
-#   scores = Autograde()
-#   WriteToFile(scores, filesToGrade[[i]], targetDirName)
-# }
+  while (problemNumber <= length(scores)) {
 
+    score = scores[problemNumber]
+    if (score == TRUE) {
+      scoresList = c(scoresList, "1/1")
+      totalCorrect = totalCorrect + 1
+    } else {
+      scoresList = c(scoresList, "0/1")
+    }
 
-# validate_that returns an error message or "True"
-# check_* returns a copy of x, so we can't use the same scoring scheme for checkR
-# Change nrow=a to nrow=a+1 to get an example of what an "error" looks like
+    problemTitle = sprintf("Problem %d:", problemNumber)
+    problemTitles = c(problemTitles, problemTitle)
+
+    problemNumber = problemNumber + 1
+  }
+  
+  problemTitles = c(problemTitles, "Total Score:")
+  scoresList = c(scoresList, sprintf("%d/%d", totalCorrect, length(scores)))
+  
+  renderedScores = data.frame(
+    Score = scoresList
+  )
+  rownames(renderedScores) = problemTitles
+  colnames(renderedScores) = ""
+  
+  return(renderedScores)
+}
