@@ -1,14 +1,3 @@
-<<<<<<< HEAD
-# OkR Example Workflow
-
-1. *Instructor* releases the skeleton file to *students*, alongside any utility files, datasets, assignment specifications, or example code. This is represented by the [Example HW Skeleton](https://github.com/jadebc-berkeley/PH250B/blob/master/OkR/Hw0_Skeleton.R).
-2. *Students* receive skeleton file and/or specification and begin work in RStudio. They complete their assignment and prepare for submission. This is represented by the [Example HW Submission](https://github.com/jadebc-berkeley/PH250B/blob/master/OkR/Hw0_Submission.R).
-3. *Students* submit their submission code on our [OkR](okpy.org) submission system.
-4. On the OkR server, the autograder runs on the submission code for each *student*. This is represented by the [Example HW Autograder](https://github.com/jadebc-berkeley/PH250B/blob/master/OkR/Hw0.ok.R).
-5. The autograder file, after generating a score report for a given submission, will export the scores as a JSON file, mapping Problems to Scores. This is represented by the [Example HW Score JSON Generator](https://github.com/jadebc-berkeley/PH250B/blob/master/OkR/ScoreExport.ok.R).
-=======
-`TODO: Update links in second part and bring over all documentation`
-
 # OkR Example Workflow
 
 1. *Instructor* releases the skeleton file to *students*, alongside any utility files, datasets, assignment specifications, or example code. This is represented by the [Example HW Skeleton](https://github.com/jadebc-berkeley/okR/blob/master/HW0_Skeleton.R).
@@ -16,9 +5,6 @@
 3. *Students* submit their submission code on our [OkR](https://okpy.org) submission system.
 4. On the OkR server, the autograder runs on the submission code for each *student*. This is represented by the [Example HW Autograder](https://github.com/jadebc-berkeley/okR/blob/master/HW0.ok.R).
 5. The autograder file, after generating a score report for a given submission, will export the scores as a JSON file, mapping Problems to Scores. This is represented by the [Example HW Score JSON Generator](https://github.com/jadebc-berkeley/okR/blob/master/ScoreExport.ok.R).
->>>>>>> eb962f62222552bbf57933fd3724e33c08fe48fa
-6. Finally, the scores can be released back to a given *student*, either by email or through OkR. This is represented by the [Example HW Score](https://github.com/jadebc-berkeley/PH250B/blob/master/OkR/Hw0Score).
-
 ---
 
 # OkR Documentation
