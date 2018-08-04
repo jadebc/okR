@@ -19,7 +19,7 @@ ReturnScore = function(problemNumber, eval) {
 
 CheckProblem1 = function() {
   problemNumber = 1   # Change to question #
-  eval = validate_that(is.numeric(x) & is.numeric(y), msg="Wrong!")
+  eval = validate_that(is.numeric(x) & is.numeric(y))
   
   scores[problemNumber] <<- eval
   ReturnScore(problemNumber, eval)

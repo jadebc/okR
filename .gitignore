@@ -6,4 +6,5 @@
 .here
 *.Rproj
 .Rproj.user
+.Rapp.history
 NUL
