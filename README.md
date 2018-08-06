@@ -15,17 +15,17 @@ OkR is an autograding scheme designed to be used for courses assigning problem s
 
 ### Getting Started
 
-Start by creating a [problem set](https://github.com/jadebc-berkeley/okR/blob/master/Hw0_Skeleton.R) either on an Rscript or Rmarkdown. It is recommended to provide a a template and starter code for the student, with sections that are intended for student work labeled `<--- YOUR CODE HERE --->`. At the beginning of each homework assignment, source the appropriate `Hw*.ok.R` file and appropriate libraries. In that setup chunk, initialize the autograder by calling `AutograderInit()`, which takes no arguments.
+Start by creating a [problem set](https://github.com/jadebc-berkeley/okR/blob/master/Hw0_Skeleton.R) either on an Rscript or Rmarkdown. It is recommended to provide a template and starter code for the student, with sections that are intended for student work labeled `<--- YOUR CODE HERE --->`. At the beginning of each homework assignment, source the appropriate `Hw*.ok.R` file and load required packages. In that setup chunk, initialize the autograder by calling `AutograderInit()`, which takes no arguments.
 
-After each problem, allow the students to check their answer with the associated problem checking function that follows the syntax `CheckProblem*()`. Calling this function runs the pre-written tests for that problem and outputs to the console. Writing these tests is described in the section below.
+After each problem, allow the students to check their answer with the associated problem checking function that follows the syntax `CheckProblem*()`. Calling this function runs the pre-written tests for that problem and sends output to the console. Writing these tests is described in the section below.
 
 At the end of the problem set, include `MyTotalScore()`, which allows the student to see their progress on the assignment so far.
 
 
 ### Writing Tests
 
-For each homework assignment, you will need to create tests that are run to check the correctness of each problem. This is done in the [hw*.ok.R](https://github.com/jadebc-berkeley/okR/blob/master/HW0.ok.R) file.
+For each homework assignment, you will need to create tests that are run to check the correctness of each problem. This is done in the [HW*.ok.R](https://github.com/jadebc-berkeley/okR/blob/master/HW0.ok.R) file.
 
-In the `AutograderInit()` function, designate the number of problems to `length`. Then, for each problem, write desired tests within the `CheckProblem*()` function. Here, you can use the `assertthat` [package](https://github.com/hadley/assertthat) and the `checkR` [package](https://cran.r-project.org/web/packages/checkr/checkr.pdf) as needed to check HW solutions. `assertthat` is generally more useful for more specific, assertion-based checks, whereas `checkR` is generally more useful for open-ended, broader checks. If you'd like to output custom error messages as hints for the student, you can use a tryCatch block to return your desired error message for each type of error. These will be displayed in the console if the solution is incorrect.
+In the `AutograderInit()` function, designate the number of problems to `length`. Then, for each problem, write desired tests within the `CheckProblem*()` function. Here, you can use the `assertthat` [package](https://github.com/hadley/assertthat) and the `checkR` [package](https://cran.r-project.org/web/packages/checkr/checkr.pdf) as needed to check HW solutions. `assertthat` is generally more useful for more specific, assertion-based checks, whereas `checkR` is generally more useful for open-ended, broader checks. If you'd like to output custom error messages as hints for the student, you can use a `tryCatch` block to return your desired error message for each type of error. These will be displayed in the console if the solution is incorrect.
 
 `ReturnScore()` and `MyTotalScore()` do not need to be edited.
