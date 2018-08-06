@@ -32,5 +32,5 @@ WriteToFile = function(scores, submissionName) {
                       auto_unbox=TRUE)
   
   submissionNameCleaned = strsplit(submissionName, ".R")
-  write(scoresJSON, file = here(paste0(submissionNameCleaned, "_ScoreReport.JSON")))
+  write(scoresJSON, file = here(paste0(submissionNameCleaned, "_score.JSON")))
 }
