@@ -10,7 +10,7 @@ if (length(args)==0) {
 library(checkr)         # CheckR is generally more useful for open-ended, broader checks
 library(assertthat)     # Assertthat is generally more useful for more specific, assertion-based checks
 suppressMessages(library(here))
-source("ScoreExport.ok.R")
+source("score_export.ok.R")
 
 ### Sources the file to be graded
 args = commandArgs(trailingOnly = TRUE)

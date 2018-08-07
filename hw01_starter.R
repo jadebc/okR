@@ -5,14 +5,14 @@
 
 library(here)
 library(nycflights13)
-source("Hw0.ok.R")
+source("hw01.ok.R")
 AutograderInit()
 
 # Problem 1
 # Assign two integers of your choosing to the values x and y.
 
-x = # FILL IN YOUR CODE HERE #
-y = # FILL IN YOUR CODE HERE #
+x = ">>>>>FILL IN YOUR CODE HERE<<<<<"
+y = ">>>>>FILL IN YOUR CODE HERE<<<<<"
 
 # Check your answer
 CheckProblem1()
@@ -20,7 +20,7 @@ CheckProblem1()
 # Problem 2
 # Assign the product of x and y to z
 
-z = # FILL IN YOUR CODE HERE #
+z = ">>>>>FILL IN YOUR CODE HERE<<<<<"
 
 # Check your answer
 CheckProblem2()
@@ -29,8 +29,8 @@ CheckProblem2()
 # Take the remainder of z divided by 100 and assign it to a. Then, get the first a rows from 
 # the nycflights13 dataset and save them in the subsetFlights variable
 
-a = # FILL IN YOUR CODE HERE #
-subsetFlights = # FILL IN YOUR CODE HERE #
+a = ">>>>>FILL IN YOUR CODE HERE<<<<<"
+subsetFlights = ">>>>>FILL IN YOUR CODE HERE<<<<<"
 
 # Check your answer
 CheckProblem3()
