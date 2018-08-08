@@ -55,6 +55,9 @@ python parse_output.py hw01_score.JSON;
 rm -rf ./*;
 ```
 5. If you are using R, you need to initialize a different Docker container for autograding that has R installed. Supply this in the `Docker Image` box (note that this is not shown in the video). The default is `cs61a/grading:latest` for a Python environment. For standard R usage, use `rocker/tidyverse:latest` or `rocker/r-base:latest`. If you need other specifications, you can [search](https://hub.docker.com/r/rocker/r-base/~/dockerfile/) for a Docker image to fit your needs.
+<p align="center">
+  <img width="460" height="300" src="https://github.com/jadebc-berkeley/okR/tree/dev/img/dockerfile.png">
+</p>
 ![Using another Docker image](https://github.com/jadebc-berkeley/okR/tree/dev/img/dockerfile.png)
 
 ### Autograder magic
