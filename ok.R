@@ -10,13 +10,14 @@ if (length(args)==0) {
 # library(checkr)         # CheckR is generally more useful for open-ended, broader checks
 # library(assertthat)     # Assertthat is generally more useful for more specific, assertion-based checks
 library(evaluate)
-suppressMessages(library(here))
 
 source("score_export.ok.R")
 
 ### Sources the file to be graded
 args = commandArgs(trailingOnly = TRUE)
 fileName = args[1]
+
+fileName = "hw01.R"
 
 ### Parse submission
 # parse_sub = function(expr_list) {
@@ -30,7 +31,6 @@ fileName = args[1]
 # evaluate(file(fileName), stop_on_error=0)
 capture.output(evaluate(file(fileName), stop_on_error=0), file='NUL')
 WriteToFile(scores, fileName)
-
 
 # validate_that returns an error message or "True"
 # check_* returns a copy of x, so we can't use the same scoring scheme for checkR
