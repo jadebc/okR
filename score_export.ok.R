@@ -5,7 +5,6 @@
 
 library(jsonlite)
 library(rlist)
-library(here)
 
 WriteToFile = function(scores, submissionName) {
   scoresList = list()
@@ -32,5 +31,5 @@ WriteToFile = function(scores, submissionName) {
                       auto_unbox=TRUE)
   
   submissionNameCleaned = strsplit(submissionName, ".R")
-  write(scoresJSON, file = here(paste0(submissionNameCleaned, "_score.JSON")))
+  write(scoresJSON, file = paste0(submissionNameCleaned, "_score.JSON"))
 }
