@@ -5,7 +5,7 @@
 
 library(here)
 library(nycflights13)
-source("hw01.ok.R")
+source("hw02.ok.R")
 AutograderInit()
 
 # Problem 1
@@ -38,7 +38,7 @@ CheckProblem3()
 # Problem 4
 # Assign an integer value to the variable w.
 
-w = 2
+w = "this is wrong!"
 
 # Check your answer
 CheckProblem4()
@@ -47,11 +47,6 @@ CheckProblem4()
 # Assign your name to the variable name.
 
 name = 'John'
-
-# Short Answer 1
-# In one sentence: what is your coding background?
-
-# I've never coded before!
 
 # Check your answer
 CheckProblem5()
