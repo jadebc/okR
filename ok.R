@@ -17,8 +17,6 @@ source("score_export.ok.R")
 args = commandArgs(trailingOnly = TRUE)
 fileName = args[1]
 
-fileName = "hw01.R"
-
 ### Parse submission
 # parse_sub = function(expr_list) {
 #   for (i in seq_along(expr_list)) {

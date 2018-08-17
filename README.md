@@ -54,6 +54,7 @@ Rscript ok.R hw01.R;
 python parse_output.py hw01_score.JSON;
 rm -rf ./*;
 ```
+*Change "hw01.R" to the name of the homework starter file you gave to students.*
 5. If you are using R, you need to initialize a different Docker container for autograding that has R installed. Supply this in the `Docker Image` box (note that this is not shown in the video). The default is `cs61a/grading:latest` for a Python environment. For standard R usage, use `rocker/tidyverse:latest` or `rocker/r-base:latest`. If you need other specifications, you can [search](https://hub.docker.com/r/rocker/r-base/~/dockerfile/) for a Docker image to fit your needs.
 <p align="center">
   <img width="460" height="300" src="https://github.com/jadebc-berkeley/okR/blob/master/dockerfile.png">
@@ -97,7 +98,7 @@ On the OkPy instructor account, you will now see a new "Grading" tab.
 
 ### Trying it out
 If the autograder fails, you may need to test the grading scripts locally.
-1. Run `Rscript ok.R hw01.R;`. This will read in the submission and grade it against `hw01.ok.R` or whatever file is specified in the header of `hw01.R` and output a scores JSON.
+1. Run `Rscript ok.R hw01.R;`. This will read in the submission `hw01.R` and grade it against `hw01.ok.R` or whatever file is specified in the header of `hw01.R` and output a scores JSON.
 2. Run `python parse_output.py hw01_score.JSON;`. This reads in the JSON and pretty prints to the console.
 
 `hw01.R` is an example of a fully correct assignment; `hw02.R` is an example of a not-so-fully correct assignment.
