@@ -64,9 +64,9 @@ For example, for hw01.R, use:
 bash autograde.sh hw01.R;
 ```
 
-5. If you are using R, you need to initialize a different Docker container for autograding that has R installed. Supply this in the `Docker Image` box (note that this is not shown in the video). The default is `cs61a/grading:latest` for a Python environment. For standard R usage, use `kaggle/rstats`. This Docker Image has the entirety of CRAN packages installed so you don't have to worry about package installation. If you need other specifications, you can [search](https://hub.docker.com/r/rocker/r-base/~/dockerfile/) for a Docker image to fit your needs.
+5. If you are using R, you need to initialize a different Docker container for autograding that has R installed. Supply this in the `Docker Image` box (note that this is not shown in the video). The default is `cs61a/grading:latest` for a Python environment. For standard R usage, use `kaggle/rstats`. This Docker Image has the entirety of CRAN R packages installed so you don't have to worry about package installation. If you need other specifications, you can [search](https://hub.docker.com/r/rocker/r-base/~/dockerfile/) for a Docker image to fit your needs or you can build your own with a DockerFile.
 
-![Using another Docker image](https://github.com/jadebc-berkeley/okR/blob/master/img/dockerfile.png)
+![Using another Docker image](https://github.com/jadebc-berkeley/okR/blob/master/img/dockerfile.png)  
 
 
 ### Autograder magic
@@ -88,23 +88,24 @@ Score:
 5. The total score is posted to OkPy.
 
 ### Manual Grading
-In addition to autograding code, you may also want to give a composition score for code style, or be able to grade short answer questions.
+In addition to autograding code, you may also want to give a composition score for code style, or be able to grade short answer questions or give full credit for "effort" submissions.
 
 1. Click into the assignment and click "Assign Grading".
 
-![Assign grading](https://github.com/jadebc-berkeley/okR/blob/master/img/assign-grading.png)
+![Assign grading](https://github.com/jadebc-berkeley/okR/blob/master/img/assign-grading.png) 
+
 2. Select the instructor you'd like to assign the submission to.
 3. Set "Kind" to "Composition"
 4. Click "Assign Grading Tasks"
 
 On the OkPy instructor account, you will now see a new "Grading" tab.
 
-![Grading tab](https://github.com/jadebc-berkeley/okR/blob/master/img/grading-tab.png)
+![Grading tab](https://github.com/jadebc-berkeley/okR/blob/master/img/grading-tab.png)  
 1. Click the grading tab to view the grading queue.
 2. Clicking "Grade" will pull up the student submission. If you specified a skeleton file on the OkPy assignment, it will default to showing the diff. You can toggle between the diff and the raw student submission `"Files"` with the tabs above the code file.
-3. Add comments and grade composition or short answer questions as needed. Comments can be made in-line and will show up in-line for the student.
+3. Add comments and grade composition or short answer/effort questions as needed. Comments can be made in-line and will show up in-line for the student.
 
-![Manual grading](https://github.com/jadebc-berkeley/okR/blob/master/img/manual-grading.png)
+![Manual grading](https://github.com/jadebc-berkeley/okR/blob/master/img/manual-grading.png)  
 4. Add a message and composition score and `Submit Score`. 
 
 ### Trying it out
