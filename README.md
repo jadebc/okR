@@ -112,5 +112,4 @@ On the OkPy instructor account, you will now see a new "Grading" tab.
 `hw01.R` is an example of a fully correct assignment; `hw02.R` is an example of a not-so-fully correct assignment. You can download and unzip `grading.zip` and put a copy of `hw01.R` in that folder, run `bash autograde.sh hw01.R` to test out the behavior of the autograder.
 
 ### Student submission
-Video instructions [here](https://youtu.be/gO7Pkj51Qy8)
-`hw01.R` is an example of a fully correct assignment; `hw02.R` is an example of a not-so-fully correct assignment.
+Video instructions [here](https://youtu.be/gO7Pkj51Qy8).
