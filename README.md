@@ -62,9 +62,6 @@ bash autograde.sh hw01R;
 ```
 
 5. If you are using R, you need to initialize a different Docker container for autograding that has R installed. Supply this in the `Docker Image` box (note that this is not shown in the video). The default is `cs61a/grading:latest` for a Python environment. For standard R usage, use `kaggle/rstats`. This Docker Image has the entirety of CRAN packages installed so you don't have to worry about package installation. If you need other specifications, you can [search](https://hub.docker.com/r/rocker/r-base/~/dockerfile/) for a Docker image to fit your needs.
-<p align="center">
-  <img width="460" height="300" src="https://github.com/jadebc-berkeley/okR/blob/master/dockerfile.png">
-</p>
 ![Using another Docker image](https://github.com/jadebc-berkeley/okR/blob/master/img/dockerfile.png)
 
 ### Autograder magic
