@@ -1,12 +1,27 @@
+#####################################
+# COURSE TITLE
+# Course description
+
+# Homework 01
+#################################################
+# Install packages required for R homework
+
+# Important: Be sure to restart RStudio after 
+# Note: You only need to run this line once!
+devtools::source_gist(id='5803c054fc2250054a3716b71c0b8b70', filename='hw_setup.R', quiet = TRUE)
+#################################################
 # Test OkR HW0 Solution File
 
-# Don't change these lines -- just run them! They load necessary packages and
-# set up the autograder.
+# Don't change these lines -- just run them! 
 
-library(here)
-library(nycflights13)
-source("hw01.ok.R")
+# Load okR autograder
+devtools::source_gist(id='fd4ea1d7041cd97eb637d2968e6c04a7', filename='hw01.ok.R', quiet = TRUE)
 AutograderInit()
+
+# Load the dataset
+library(nycflights13)
+
+#################################################
 
 # Problem 1
 # Assign two integers of your choosing to the values x and y.

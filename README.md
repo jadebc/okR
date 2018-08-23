@@ -28,6 +28,8 @@ For each homework assignment, you will need to create tests that are run to chec
 
 In the `AutograderInit()` function, designate the number of problems to `length`. Then, for each problem, write desired tests within the `CheckProblem*()` function. Here, you can use the `assertthat` [package](https://github.com/hadley/assertthat) and the `checkR` [package](https://cran.r-project.org/web/packages/checkr/checkr.pdf) as needed to check HW solutions. `assertthat` is generally more useful for more specific, assertion-based checks, whereas `checkR` is generally more useful for open-ended, broader checks. If you'd like to output custom error messages as hints for the student, you can use a `tryCatch` block to return your desired error message for each type of error. These will be displayed in the console if the solution is incorrect.
 
+Then, upload this as gist at [gist.github.com](https://gist.github.com/) and make sure to source this gist at the beginning of the associated assignment file. By putting your autograding file on github, you can update the autograding file as necessary and students will automatically fetch updates each time they run their homework file.
+
 `ReturnScore()` and `MyTotalScore()` do not need to be edited.
 
 # Setting up your course on OkPy
@@ -35,10 +37,12 @@ In the `AutograderInit()` function, designate the number of problems to `length`
 To use OkPy, [request access](https://okpy.github.io/documentation/autograder.html#autograder-documentation-request-access) from the OkPy staff to obtain a server-side autograder account. Note that this account is used purely for setting up the autograder, and is distinct from an instructor account on OkPy where you would create assignments, view student submissions, send students emails, etc. *This account will be referred to as the __autograder__ account.*
 
 ### Creating a course
-Coming soon!
+If you are already enrolled as an instructor on a previous course in OkPy, creating a new course is simple from the instructor dashboard.
+
+If you have not been an instructor in the past, request access by emailing nolanpokpongkiat@berkeley.edu.
 
 ### Creating an assignment
-Coming soon!
+From the instructor dashboard, click into courses. Then, click "Assignments" and click "Create Assignment". Fill in your assignment name and the auto-generated endpoint will work fine. 
 
 ### Autograder setup
 Once you have created an *OkPy assignment*, you will need to set up the *autograder assignment* for it on your *autograder account* and associate the two. This [video](https://www.youtube.com/watch?v=wwD9hoMYGVY) outlines the steps to do so. 
@@ -49,13 +53,15 @@ Some notes & clarifications:
 3. At 2:23, your course name is your *autograder account* username.
 4. At 2:25, for the grading script, use
 ``` bash
-Rscript setup.R >/dev/null 2>&1; 
-Rscript ok.R hw01.R; 
-python parse_output.py hw01_score.JSON;
-rm -rf ./*;
+bash autograde.sh <name_of_your_assignment>;
 ```
-*Change "hw01.R" to the name of the homework starter file you gave to students.*
-5. If you are using R, you need to initialize a different Docker container for autograding that has R installed. Supply this in the `Docker Image` box (note that this is not shown in the video). The default is `cs61a/grading:latest` for a Python environment. For standard R usage, use `rocker/tidyverse:latest` or `rocker/r-base:latest`. If you need other specifications, you can [search](https://hub.docker.com/r/rocker/r-base/~/dockerfile/) for a Docker image to fit your needs.
+
+For example, for hw01.R, use: 
+```bash
+bash autograde.sh hw01R;
+```
+
+5. If you are using R, you need to initialize a different Docker container for autograding that has R installed. Supply this in the `Docker Image` box (note that this is not shown in the video). The default is `cs61a/grading:latest` for a Python environment. For standard R usage, use `kaggle/rstats`. This Docker Image has the entirety of CRAN packages installed so you don't have to worry about package installation. If you need other specifications, you can [search](https://hub.docker.com/r/rocker/r-base/~/dockerfile/) for a Docker image to fit your needs.
 <p align="center">
   <img width="460" height="300" src="https://github.com/jadebc-berkeley/okR/blob/master/dockerfile.png">
 </p>
@@ -97,8 +103,4 @@ On the OkPy instructor account, you will now see a new "Grading" tab.
 4. Add a message and composition score and `Submit Score`. 
 
 ### Trying it out
-If the autograder fails, you may need to test the grading scripts locally.
-1. Run `Rscript ok.R hw01.R;`. This will read in the submission `hw01.R` and grade it against `hw01.ok.R` or whatever file is specified in the header of `hw01.R` and output a scores JSON.
-2. Run `python parse_output.py hw01_score.JSON;`. This reads in the JSON and pretty prints to the console.
-
 `hw01.R` is an example of a fully correct assignment; `hw02.R` is an example of a not-so-fully correct assignment.

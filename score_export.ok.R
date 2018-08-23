@@ -4,7 +4,7 @@
 # the current directory.
 
 library(jsonlite)
-library(rlist)
+# library(rlist)
 
 WriteToFile = function(scores, submissionName) {
   scoresList = list()
