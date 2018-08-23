@@ -13,7 +13,9 @@ OkR is an autograding scheme designed to be used for courses assigning problem s
 5. The autograder file, after generating a score report for a given submission, will export the scores as a [JSON file](https://github.com/jadebc-berkeley/okR/blob/master/hw01_score.JSON), mapping Problems to Scores. This can be formatted to automatically send to the student via email upon grading, or sent to the OkPy API for viewing on the OkPy interface.
 
 
-### Getting Started
+## Getting Started
+
+### Creating an assignment
 
 Start by creating a [problem set](https://github.com/jadebc-berkeley/okR/blob/master/hw01_starter.R) either on an Rscript or Rmarkdown. It is recommended to provide a template and starter code for the student, with sections that are intended for student work labeled `">>>>>FILL IN YOUR CODE HERE<<<<<"`. At the beginning of each homework assignment, source the appropriate `hw*.ok.R` file and load required packages. We recommend sourcing a `setup.R` file from GitHub Gist to prompt package installs and sourcing the *.ok.R autograder file from Gist as well. To do so, use `devtools::source_gist(id='', filename='', quiet = TRUE)`. __IMPORTANT:__ _Make sure the only elements in the first 5 lines are comments and `setup.R` sourcing because the first 5 lines are removed from the file in the autograding step._ After sourcing the setup file and autograding file, initialize the autograder by calling `AutograderInit()`, which takes no arguments.
 
@@ -21,6 +23,7 @@ After each problem, allow students to check their answer with the associated pro
 
 At the end of the problem set, include `MyTotalScore()`, which allows the student to see their progress on the assignment so far.
 
+If your assignment needs to load in data from a separate file, include these files in your distribution to your students. It is recommended to release the assignment as a zip file of the problem set itself along with the datasets, all at the same directory level. To ensure proper autograding, include these dataset files in your `grading.zip` when configuring the autograder (detailed below).
 
 ### Writing Tests
 
@@ -49,7 +52,7 @@ Once you have created an *OkPy assignment*, you will need to set up the *autogra
 
 Some notes & clarifications:
 1. Ignore 0:13-1:33, as we are not using the Ok grading suite, and running our own suite instead.
-2. At 1:37, these would be the non-student-submission files: [ok.R](https://github.com/jadebc-berkeley/okR/blob/master/ok.R), [parse_output.py](https://github.com/jadebc-berkeley/okR/blob/master/parse_output.py), [score_export.ok.R](https://github.com/jadebc-berkeley/okR/blob/master/score_export.ok.R), and [autograde.sh](https://github.com/jadebc-berkeley/okR/blob/master/autograde.sh). These files are summarized in [grading.zip](https://github.com/jadebc-berkeley/okR/blob/master/grading.zip)
+2. At 1:37, these would be the non-student-submission files: [ok.R](https://github.com/jadebc-berkeley/okR/blob/master/ok.R), [parse_output.py](https://github.com/jadebc-berkeley/okR/blob/master/parse_output.py), [score_export.ok.R](https://github.com/jadebc-berkeley/okR/blob/master/score_export.ok.R), and [autograde.sh](https://github.com/jadebc-berkeley/okR/blob/master/autograde.sh). These files are summarized in [grading.zip](https://github.com/jadebc-berkeley/okR/blob/master/grading.zip). Feel free to use `grading.zip` as is if you don't have other data files that need to be included-- if you do, add those into the zip as well. For example, if your R assignment loads in data from `my_data.csv`, include `my_data.csv` in your grading zip.
 3. At 2:23, your course name is your *autograder account* username.
 4. At 2:25, for the grading script, use
 ``` bash
@@ -64,9 +67,6 @@ bash autograde.sh hw01.R;
 5. If you are using R, you need to initialize a different Docker container for autograding that has R installed. Supply this in the `Docker Image` box (note that this is not shown in the video). The default is `cs61a/grading:latest` for a Python environment. For standard R usage, use `kaggle/rstats`. This Docker Image has the entirety of CRAN packages installed so you don't have to worry about package installation. If you need other specifications, you can [search](https://hub.docker.com/r/rocker/r-base/~/dockerfile/) for a Docker image to fit your needs.
 
 ![Using another Docker image](https://github.com/jadebc-berkeley/okR/blob/master/img/dockerfile.png)
-
-
-### Writing Homework Assignments
 
 
 ### Autograder magic
