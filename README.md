@@ -15,9 +15,9 @@ OkR is an autograding scheme designed to be used for courses assigning problem s
 
 ### Getting Started
 
-Start by creating a [problem set](https://github.com/jadebc-berkeley/okR/blob/master/hw01_starter.R) either on an Rscript or Rmarkdown. It is recommended to provide a template and starter code for the student, with sections that are intended for student work labeled `">>>>>FILL IN YOUR CODE HERE<<<<<"`. At the beginning of each homework assignment, source the appropriate `hw*.ok.R` file and load required packages. In that setup chunk, initialize the autograder by calling `AutograderInit()`, which takes no arguments.
+Start by creating a [problem set](https://github.com/jadebc-berkeley/okR/blob/master/hw01_starter.R) either on an Rscript or Rmarkdown. It is recommended to provide a template and starter code for the student, with sections that are intended for student work labeled `">>>>>FILL IN YOUR CODE HERE<<<<<"`. At the beginning of each homework assignment, source the appropriate `hw*.ok.R` file and load required packages. We recommend sourcing a `setup.R` file from GitHub Gist to prompt package installs and sourcing the *.ok.R autograder file from Gist as well. To do so, use `devtools::source_gist(id='', filename='', quiet = TRUE)`. __IMPORTANT:__ _Make sure the only elements in the first 2 lines are comments and `setup.R` sourcing because the first 2 lines are removed from the file in the autograding step._ After sourcing the setup file and autograding file, initialize the autograder by calling `AutograderInit()`, which takes no arguments.
 
-After each problem, allow the students to check their answer with the associated problem checking function that follows the syntax `CheckProblem*()`. Calling this function runs the pre-written tests for that problem and sends output to the console. Writing these tests is described in the section below.
+After each problem, allow students to check their answer with the associated problem checking function that follows the syntax `CheckProblem*()`. Calling this function runs the pre-written tests for that problem and sends output to the console. Writing these tests is described in the section below.
 
 At the end of the problem set, include `MyTotalScore()`, which allows the student to see their progress on the assignment so far.
 
@@ -49,21 +49,25 @@ Once you have created an *OkPy assignment*, you will need to set up the *autogra
 
 Some notes & clarifications:
 1. Ignore 0:13-1:33, as we are not using the Ok grading suite, and running our own suite instead.
-2. At 1:37, these would be the non-student-submission files: [hw*.ok.R](https://github.com/jadebc-berkeley/okR/blob/master/hw01.R), [ok.R](https://github.com/jadebc-berkeley/okR/blob/master/ok.R), [parse_output.py](https://github.com/jadebc-berkeley/okR/blob/master/parse_output.py), [score_export.ok.R](https://github.com/jadebc-berkeley/okR/blob/master/score_export.ok.R), and [setup.R](https://github.com/jadebc-berkeley/okR/blob/master/setup.R). These files are summarized in [hw01-grading.zip](https://github.com/jadebc-berkeley/okR/blob/master/hw01-grading.zip)
+2. At 1:37, these would be the non-student-submission files: [ok.R](https://github.com/jadebc-berkeley/okR/blob/master/ok.R), [parse_output.py](https://github.com/jadebc-berkeley/okR/blob/master/parse_output.py), [score_export.ok.R](https://github.com/jadebc-berkeley/okR/blob/master/score_export.ok.R), and [autograde.sh](https://github.com/jadebc-berkeley/okR/blob/master/autograde.sh). These files are summarized in [grading.zip](https://github.com/jadebc-berkeley/okR/blob/master/grading.zip)
 3. At 2:23, your course name is your *autograder account* username.
 4. At 2:25, for the grading script, use
 ``` bash
-bash autograde.sh <name_of_your_assignment>;
+bash autograde.sh <name_of_your_R_assignment>;
 ```
 
 For example, for hw01.R, use: 
 ```bash
-bash autograde.sh hw01R;
+bash autograde.sh hw01.R;
 ```
 
 5. If you are using R, you need to initialize a different Docker container for autograding that has R installed. Supply this in the `Docker Image` box (note that this is not shown in the video). The default is `cs61a/grading:latest` for a Python environment. For standard R usage, use `kaggle/rstats`. This Docker Image has the entirety of CRAN packages installed so you don't have to worry about package installation. If you need other specifications, you can [search](https://hub.docker.com/r/rocker/r-base/~/dockerfile/) for a Docker image to fit your needs.
 
 ![Using another Docker image](https://github.com/jadebc-berkeley/okR/blob/master/img/dockerfile.png)
+
+
+### Writing Homework Assignments
+
 
 ### Autograder magic
 1. Upon queueing a submission to the autograder, the OkPy server initiates a Docker container from the Docker image provided. 

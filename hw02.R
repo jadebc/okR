@@ -1,14 +1,13 @@
-#####################################
-# COURSE TITLE
-# Course description
-
-# Homework 02
-#################################################
 # Install packages required for R homework
 
 # Important: Be sure to restart RStudio after 
 # Note: You only need to run this line once!
 devtools::source_gist(id='5803c054fc2250054a3716b71c0b8b70', filename='hw_setup.R', quiet = TRUE)
+#####################################
+# COURSE TITLE
+# Course description
+
+# Homework 02
 #################################################
 # Test OkR HW0 Solution File
 
