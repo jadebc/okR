@@ -31,7 +31,7 @@ For each homework assignment, you will need to create tests that are run to chec
 
 In the `AutograderInit()` function, designate the number of problems to `length`. Then, for each problem, write desired tests within the `CheckProblem*()` function. Here, you can use the `assertthat` [package](https://github.com/hadley/assertthat) and the `checkR` [package](https://cran.r-project.org/web/packages/checkr/checkr.pdf) as needed to check HW solutions. `assertthat` is generally more useful for more specific, assertion-based checks, whereas `checkR` is generally more useful for open-ended, broader checks. If you'd like to output custom error messages as hints for the student, you can use a `tryCatch` block to return your desired error message for each type of error. These will be displayed in the console if the solution is incorrect.
 
-Then, upload this as gist at [gist.github.com](https://gist.github.com/) and make sure to source this gist at the beginning of the associated assignment file. By putting your autograding file on github, you can update the autograding file as necessary and students will automatically fetch updates each time they run their homework file.
+Then, upload this as [gist](https://gist.github.com/nolanpokpongkiat/fd4ea1d7041cd97eb637d2968e6c04a7) at [gist.github.com](https://gist.github.com/) and make sure to source this gist at the beginning of the associated assignment file. By putting your autograding file on github, you can update the autograding file as necessary and students will automatically fetch updates each time they run their homework file.
 
 `ReturnScore()` and `MyTotalScore()` do not need to be edited.
 
@@ -48,13 +48,11 @@ If you have not been an instructor in the past, request access by emailing nolan
 From the instructor dashboard, click into courses. Then, click "Assignments" and click "Create Assignment". Fill in your assignment name and the auto-generated endpoint will work fine. 
 
 ### Autograder setup
-Once you have created an *OkPy assignment*, you will need to set up the *autograder assignment* for it on your *autograder account* and associate the two. This [video](https://www.youtube.com/watch?v=wwD9hoMYGVY) outlines the steps to do so. 
+Once you have created an *OkPy assignment*, you will need to set up the *autograder assignment* for it on your *autograder account* and associate the two. This [video](https://youtu.be/C4LoG8u_ePk) outlines the steps to do so. 
 
-Some notes & clarifications:
-1. Ignore 0:13-1:33, as we are not using the Ok grading suite, and running our own suite instead.
-2. At 1:37, these would be the non-student-submission files: [ok.R](https://github.com/jadebc-berkeley/okR/blob/master/ok.R), [parse_output.py](https://github.com/jadebc-berkeley/okR/blob/master/parse_output.py), [score_export.ok.R](https://github.com/jadebc-berkeley/okR/blob/master/score_export.ok.R), and [autograde.sh](https://github.com/jadebc-berkeley/okR/blob/master/autograde.sh). These files are summarized in [grading.zip](https://github.com/jadebc-berkeley/okR/blob/master/grading.zip). Feel free to use `grading.zip` as is if you don't have other data files that need to be included-- if you do, add those into the zip as well. For example, if your R assignment loads in data from `my_data.csv`, include `my_data.csv` in your grading zip.
-3. At 2:23, your course name is your *autograder account* username.
-4. At 2:25, for the grading script, use
+Important Notes:
+3. Your course name is the one assigned to you when given your *autograder account*.
+4. For the grading script, use:
 ``` bash
 bash autograde.sh <name_of_your_R_assignment>;
 ```
@@ -88,7 +86,7 @@ Score:
 5. The total score is posted to OkPy.
 
 ### Manual Grading
-In addition to autograding code, you may also want to give a composition score for code style, or be able to grade short answer questions or give full credit for "effort" submissions.
+In addition to autograding code, you may also want to give a composition score for code style, or be able to grade short answer questions or give full credit for "effort" submissions. This video outlines the [steps](https://youtu.be/l4BYBZD16uA).
 
 1. Click into the assignment and click "Assign Grading".
 
