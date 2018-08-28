@@ -51,8 +51,8 @@ From the instructor dashboard, click into courses. Then, click "Assignments" and
 Once you have created an *OkPy assignment*, you will need to set up the *autograder assignment* for it on your *autograder account* and associate the two. This [video](https://youtu.be/C4LoG8u_ePk) outlines the steps to do so. 
 
 Important Notes:
-3. Your course name is the one assigned to you when given your *autograder account*.
-4. For the grading script, use:
+1. Your course name is the one assigned to you when given your *autograder account*.
+2. For the grading script, use:
 ``` bash
 bash autograde.sh <name_of_your_R_assignment>;
 ```
@@ -86,7 +86,7 @@ Score:
 5. The total score is posted to OkPy.
 
 ### Manual Grading
-In addition to autograding code, you may also want to give a composition score for code style, or be able to grade short answer questions or give full credit for "effort" submissions. This video outlines the [steps](https://youtu.be/l4BYBZD16uA).
+In addition to autograding code, you may also want to give a composition score for code style, or be able to grade short answer questions or give full credit for "effort" submissions. This [video](https://youtu.be/l4BYBZD16uA) outlines the steps.
 
 1. Click into the assignment and click "Assign Grading".
 
