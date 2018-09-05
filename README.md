@@ -17,13 +17,17 @@ OkR is an autograding scheme designed to be used for courses assigning problem s
 
 ### Creating an assignment
 
-Start by creating a [problem set](https://github.com/jadebc-berkeley/okR/blob/master/hw01_starter.R) either on an Rscript or Rmarkdown. It is recommended to provide a template and starter code for the student, with sections that are intended for student work labeled `">>>>>FILL IN YOUR CODE HERE<<<<<"`. At the beginning of each homework assignment, source the appropriate `hw*.ok.R` file and load required packages. We recommend sourcing a `setup.R` file from GitHub Gist to prompt package installs and sourcing the *.ok.R autograder file from Gist as well. To do so, use `devtools::source_gist(id='', filename='', quiet = TRUE)`. __IMPORTANT:__ _Make sure the only elements in the first 5 lines are comments and `setup.R` sourcing because the first 5 lines are removed from the file in the autograding step._ After sourcing the setup file and autograding file, initialize the autograder by calling `AutograderInit()`, which takes no arguments.
+Start by creating a [problem set](https://github.com/jadebc-berkeley/okR/blob/master/hw01_starter.R) either on an Rscript or Rmarkdown. It is recommended to provide a template and starter code for the student, with sections that are intended for student work labeled `">>>>>FILL IN YOUR CODE HERE<<<<<"`. At the beginning of each homework assignment, source the appropriate `hw*.ok.R` file and load required packages. We recommend sourcing a `setup.R` file from GitHub Gist to prompt package installs and sourcing the *.ok.R autograder file from Gist as well. To do so, use `devtools::source_gist(id='', filename='', quiet = TRUE)`. __IMPORTANT:__ _Make sure the only elements in the first 6 lines are comments and `setup.R` sourcing, because the first 6 lines are removed from the file in the autograding step. Be sure to make it clear that students are NOT to edit the first 6 lines._ After sourcing the setup file and autograding file, initialize the autograder by calling `AutograderInit()`, which takes no arguments.
 
 After each problem, allow students to check their answer with the associated problem checking function that follows the syntax `CheckProblem*()`. Calling this function runs the pre-written tests for that problem and sends output to the console. Writing these tests is described in the section below.
 
 At the end of the problem set, include `MyTotalScore()`, which allows the student to see their progress on the assignment so far.
 
+### Loading Datasets
+
 If your assignment needs to load in data from a separate file, include these files in your distribution to your students. It is recommended to release the assignment as a zip file of the problem set itself along with the datasets, all at the same directory level. To ensure proper autograding, include these dataset files in your `grading.zip` when configuring the autograder (detailed below).
+
+Another option is to have the problem set load the dataset from a url. In this case, use `read_csv("http://path/to/my/dataset.csv")`. This function is available via the `readR` package, which is included in `tidyverse`. This works on any dataset that is available online, and `read_csv(...)` can automatically decompress zip files, which is really nice. You can upload your dataset to Github or Github Gists and have your problem set source data from there. Read more about [read_csv](http://r4ds.had.co.nz/import.html). 
 
 ### Writing Tests
 
@@ -44,6 +48,19 @@ If you are already enrolled as an instructor on a previous course in OkPy, creat
 
 If you have not been an instructor in the past, request access by emailing nolanpokpongkiat@berkeley.edu.
 
+### Canvas/bCourses Integration
+To enroll students in your course, you have two options:
+1. From the course dashboard, `Enrollment` > `Add+` / `Enroll via CSV`
+2. Enroll students from bCourses
+
+To utilize the bCourses integration:
+1. Set up the bCourses configuration by clicking on `bCourses` from the course dashboard.
+2. "Edit bCourses Configuration"
+3. Enter your bcourses course url: this is the url at the main dashboard of your course on bCourses.
+4. Enter the access token: on bCourses, go to Account > Settings > New Access Token
+5. Click "Submit".
+6. Click "Enroll Students from bCourses". This should import students' names, emails, and SIDs, and enroll them in your course.
+
 ### Creating an assignment
 From the instructor dashboard, click into courses. Then, click "Assignments" and click "Create Assignment". Fill in your assignment name and the auto-generated endpoint will work fine. 
 
@@ -62,7 +79,7 @@ For example, for hw01.R, use:
 bash autograde.sh hw01.R;
 ```
 
-5. If you are using R, you need to initialize a different Docker container for autograding that has R installed. Supply this in the `Docker Image` box (note that this is not shown in the video). The default is `cs61a/grading:latest` for a Python environment. For standard R usage, use `kaggle/rstats`. This Docker Image has the entirety of CRAN R packages installed so you don't have to worry about package installation. If you need other specifications, you can [search](https://hub.docker.com/r/rocker/r-base/~/dockerfile/) for a Docker image to fit your needs or you can build your own with a DockerFile.
+3. If you are using R, you need to initialize a different Docker container for autograding that has R installed. Supply this in the `Docker Image` box (note that this is not shown in the video). The default is `cs61a/grading:latest` for a Python environment. For standard R usage, use `kaggle/rstats`. This Docker Image has the entirety of CRAN R packages installed so you don't have to worry about package installation. If you need other specifications, you can [search](https://hub.docker.com/r/rocker/r-base/~/dockerfile/) for a Docker image to fit your needs or you can build your own with a DockerFile.
 
 ![Using another Docker image](https://github.com/jadebc-berkeley/okR/blob/master/img/dockerfile.png)  
 
@@ -105,6 +122,29 @@ On the OkPy instructor account, you will now see a new "Grading" tab.
 
 ![Manual grading](https://github.com/jadebc-berkeley/okR/blob/master/img/manual-grading.png)  
 4. Add a message and composition score and `Submit Score`. 
+
+### Publishing Scores to Students
+Upon grading, the scores are not automatically posted to the student-side. To publish scores to students:
+
+1. Click into the dashboard of the specified assignment.
+2. "View Scores"
+3. "Make Scores Visible"
+4. Select which scores you want to publish. In general, you'll be dealing with "composition" and "total".
+5. "Save!"
+
+Now students should be able to see their scores on the student-side of OkPy.
+
+### bCourses Scores Export
+Assuming you have already set up your bCourses configuration, (see "Canvas/bCourses Integration") you are able to export your autograded scores for student view on bCourses. Before exporting a score, also make sure you have created an assignment on bCourses that you would like to link your okPy assignment to.
+
+1. Click into "bCourses" from your course dashboard.
+2. "+ Add Assignment"
+3. Select your OK assignment from the dropdown.
+4. Select the bCourses assignment you wish to export to on the dropdown.
+5. Select "Composition" for style/composition/FRQ scores, or "Total" for autograded scores.
+6. "Submit"
+
+This should bring you to a job queue page and upon completion, should report the status of exporting scores.
 
 ### Trying it out
 `hw01.R` is an example of a fully correct assignment; `hw02.R` is an example of a not-so-fully correct assignment. You can download and unzip `grading.zip` and put a copy of `hw01.R` in that folder, run `bash autograde.sh hw01.R` to test out the behavior of the autograder.
