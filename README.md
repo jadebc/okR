@@ -151,3 +151,5 @@ This should bring you to a job queue page and upon completion, should report the
 
 ### Student submission
 Video instructions [here](https://youtu.be/gO7Pkj51Qy8).
+
+Created by Nolan Pokpongkiat, Kunal Mishra, and [Jade Benjamin-Chung](https://www.ocf.berkeley.edu/~jadebc/). 
