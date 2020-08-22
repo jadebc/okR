@@ -1,4 +1,4 @@
-# OkR
+# OkR: Autograding software for R
 
 ### Overview 
 
